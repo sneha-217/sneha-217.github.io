@@ -1,12 +1,238 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sneha | Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #0f172a;
+  color: white;
+}
+
+/* Navbar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: #020617;
+  position: sticky;
+  top: 0;
+}
+
+nav h1 {
+  color: #38bdf8;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+/* Hero */
+.hero {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  text-align: center;
+}
+
+.hero img {
+  width: 130px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #38bdf8;
+}
+
+.hero h2 {
+  font-size: 40px;
+}
+
+.hero span {
+  color: #38bdf8;
+}
+
+.typing {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #94a3b8;
+}
+
+.btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #38bdf8;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0ea5e9;
+}
+
+/* Sections */
+section {
+  padding: 60px 40px;
+}
+
+h3 {
+  color: #38bdf8;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: #020617;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+/* Social */
+.social a {
+  margin: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}
+</style>
+
+</head>
+
+<body>
+
+<nav>
+  <h1>Sneha</h1>
+  <div>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+  </div>
+</nav>
 
 <div class="hero">
-  <img src="https://via.placeholder.com/120" alt="profile">
+  <img src="https://via.placeholder.com/130" alt="profile">
 
   <h2>Hi, I'm <span>Sneha 👋</span></h2>
-  <p>Aspiring Web Developer</p>
 
-  <!-- Resume button -->
+  <div class="typing" id="typing"></div>
+
   <a href="resume.pdf" download>
-    <button class="btn
-     
+    <button class="btn">Download Resume</button>
+  </a>
+
+  <div class="social">
+    <a href="#">GitHub</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</div>
+
+<section id="about">
+  <h3>About Me</h3>
+  <div class="container">
+    <div class="card">
+      <p>
+        I am an aspiring web developer passionate about building modern and user-friendly websites. 
+        Currently learning HTML, CSS, Java and working on projects like CabHub.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <h3>Skills</h3>
+  <div class="container">
+    <div class="card">C Programming</div>
+    <div class="card">HTML & CSS</div>
+    <div class="card">Basic Java</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h3>Projects</h3>
+  <div class="container">
+    <div class="card">
+      <h4>CabHub 🚖</h4>
+      <p>
+        A cab booking system built using C with login, fare comparison and booking features.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>Contact</h3>
+  <div class="container">
+    <div class="card">
+      <p>Email: yourmail@gmail.com</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sneha | Portfolio</p>
+</footer>
+
+<script>
+const text = ["Aspiring Web Developer", "Learning & Building Projects", "Future Software Engineer 🚀"];
+let i = 0;
+let j = 0;
+let currentText = "";
+let isDeleting = false;
+
+function type() {
+  if (i < text.length) {
+    if (!isDeleting && j <= text[i].length) {
+      currentText = text[i].substring(0, j++);
+    } else if (isDeleting && j >= 0) {
+      currentText = text[i].substring(0, j--);
+    }
+
+    document.getElementById("typing").innerHTML = currentText;
+
+    if (j === text[i].length) isDeleting = true;
+    if (j === 0) {
+      isDeleting = false;
+      i++;
+    }
+  }
+  setTimeout(type, 100);
+}
+
+type();
+</script>
+
+</body>
+</html>
